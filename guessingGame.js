@@ -39,7 +39,7 @@ $(document).ready(function() {
       {$("#compare").text(lowerOrHigher());}
 };
 
-  // Determine if the next guess should be a lower or higher number
+  // Determine if the next guess should be a lower or higher number.
 
   function lowerOrHigher() {	
     if(winningNumber > playersGuess) {
