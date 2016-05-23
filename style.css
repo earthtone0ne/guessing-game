@@ -1,0 +1,57 @@
+body {
+    background-color:gray;
+    background-image: url(BKBridgeManh.JPG);
+    background-size: 100%;
+    
+}
+#welcome{
+    background: cadetblue;
+    opacity: 0.9;
+    padding-left: 1em;
+}
+#subwelcome {
+    position: relative;
+    padding-left: 2em;
+    padding-bottom: 2em;
+}
+
+.main {
+    min-height: 20em;
+    padding:  0;
+    color: oldlace;
+    background-color: cadetblue;
+    opacity: 0.85;
+    margin-bottom: 1em;
+    margin-top: 1em;  
+    padding-left: 2em;
+    padding-top: 1em;
+    
+}
+.main input {
+    color: navy;
+    font-size: 1.5em;
+    margin-left: 50%;
+    min-width: 6em;
+    padding-left: 10%;
+    height: 2em;
+}
+#guess-btn {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+#results {
+    min-height: 4em;
+    font-size: 1.2em;
+}
+#hint-btn, #new-game-btn {
+    margin-top: 1em;
+}
+.results {
+    min-height: 3em;
+}
+
+.winner {
+    font-weight: bolder;
+    font-size: 1.6em;
+    color: #ffcc00;
+}
