@@ -52,6 +52,7 @@ body {
 
 .winner {
     font-weight: bolder;
-    font-size: 1.6em;
+    font-size: 1.7em;
     color: #ffcc00;
+    text-align: center;
 }

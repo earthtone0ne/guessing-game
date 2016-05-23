@@ -30,7 +30,8 @@ $(document).ready(function() {
     playersGuess = $("#guessInput").val();
     
     $("#yourGuess").text("Your guess was " + playersGuess + ".");
-    if (winningNumber==playersGuess){
+    $("#guessInput").val("").focus();
+    if (checkGuess()==true){
       $("#compare").text("WINNER!");
       $("#compare").addClass("winner");
     }
@@ -55,8 +56,10 @@ $(document).ready(function() {
   // Check if the Player's Guess is the winning number 
 
   function checkGuess() {
-    // add code here
-  }
+    if (winningNumber==playersGuess){
+      	return true;
+		}  else {return false;}
+	}
 
   // Create a provide hint button that provides additional clues to the "Player"
 
