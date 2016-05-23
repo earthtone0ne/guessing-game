@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
    var winningNumber = generateWinningNumber();
+   var guessHistory = [];
    var playersGuess; 
    
    function generateWinningNumber() {
@@ -9,35 +10,22 @@ $(document).ready(function() {
 
   
 
-  $("#guess-btn").click(function() {
-  	playersGuessSubmission()
-  });
-  $("#guessInput").on('keyup',function(event){
-  	if (event.keyCode == 13) {
-  		playersGuessSubmission();
-  	}
-  });
-    
-
-  $("#hint-btn").click(function() {
-    $("#compare").append(provideHint());
-  	});
-  
-  $("#new-game-btn").click(function(){playAgain(); });
-  // Fetch the Players Guess
+    // Fetch the Players Guess
 
   function playersGuessSubmission() {
     playersGuess = $("#guessInput").val();
-    
+  
     $("#yourGuess").text("Your guess was " + playersGuess + ".");
-    $("#guessInput").val("").focus();
-    if (checkGuess()==true){
-      $("#compare").text("WINNER!");
-      $("#compare").addClass("winner");
-    }
     
-    else 
-      {$("#compare").text(lowerOrHigher());}
+  	$("#guessInput").val("").focus();
+    if (checkGuess()==false){
+        $("#compare").text(lowerOrHigher());
+        if (guessHistory.indexOf(playersGuess)!== -1){
+  		$("#yourGuess").append(" You've tried that before!"); 		  
+  		}
+  	}
+  	guessHistory.push(playersGuess);
+  	
 };
 
   // Determine if the next guess should be a lower or higher number.
@@ -57,7 +45,11 @@ $(document).ready(function() {
 
   function checkGuess() {
     if (winningNumber==playersGuess){
-      	return true;
+      	$("#compare").text("WINNER!");
+      	$("#compare").animate({opacity: '0.7'},900);
+      	$("#compare").animate({opacity: '1'},800);
+        $("#compare").addClass("winner");
+        return true;
 		}  else {return false;}
 	}
 
@@ -84,7 +76,26 @@ $(document).ready(function() {
     winningNumber=generateWinningNumber();
     $("#guessInput").val('');
     $(".winner").removeClass();
+    guessHistory=[];
   }
 
   /* **** Event Listeners/Handlers ****  */
+  $("#guess-btn").click(function() {
+  	playersGuessSubmission()
+  });
+
+  $("#guessInput").on('keyup',function(event){
+  	if (event.keyCode == 13) {
+  		playersGuessSubmission();
+  	}
+   });
+    
+
+  $("#hint-btn").click(function() {
+    $("#compare").append(provideHint());
+  });
+  
+  $("#new-game-btn").click(function(){playAgain(); });
+
 });
+
